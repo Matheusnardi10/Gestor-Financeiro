@@ -1,0 +1,65 @@
+<div class="container">
+  <h2>Movimentações</h2>
+  <a routerLink="/cadastro">Nova movimentação</a>
+
+  <div class="resumo">
+    <span>Entradas: {{ totalEntradas() | currency: 'BRL' }}</span>
+    <span>Saídas: {{ totalSaidas() | currency: 'BRL' }}</span>
+    <span>Saldo: {{ saldo() | currency: 'BRL' }}</span>
+  </div>
+
+  <div class="filtros">
+    <select [ngModel]="filtroCategoria()" (ngModelChange)="filtroCategoria.set($event)">
+      <option value="">Todas as categorias</option>
+      @for (c of categorias; track c.nome) {
+        <option [value]="c.nome">{{ c.nome }}</option>
+      }
+    </select>
+
+    <select [ngModel]="filtroTipo()" (ngModelChange)="filtroTipo.set($event)">
+      <option value="">Entradas e saídas</option>
+      <option value="entrada">Somente entradas</option>
+      <option value="saida">Somente saídas</option>
+    </select>
+  </div>
+
+  @if (erro()) {
+    <p style="color: red">{{ erro() }}</p>
+  }
+
+  @if (carregando()) {
+    <p>Carregando…</p>
+  } @else {
+    @if (filtradas().length === 0) {
+      <p>Nenhuma movimentação cadastrada</p>
+    } @else {
+      <ul>
+        @for (m of filtradas(); track m._id) {
+          <li [style.border-left-color]="cor(m.categoria)">
+            <strong>{{ m.descricao }}</strong> — {{ m.categoria }} —
+            {{ m.tipo === 'saida' ? '-' : '+' }}{{ m.valor | currency: 'BRL' }} —
+            {{ m.data | date: 'dd/MM/yyyy' : 'UTC' }}
+            <a [routerLink]="['/cadastro', m._id]">Editar</a>
+            <button (click)="excluir(m._id)">Excluir</button>
+          </li>
+        }
+      </ul>
+    }
+  }
+    <h3>Gastos por categoria</h3>
+  @if (gastosPorCategoria().length === 0) {
+    <p>Nenhuma saída cadastrada</p>
+  } @else {
+    <div class="grafico">
+      <div class="pizza" [style.background]="pizza()"></div>
+      <div class="legenda">
+        @for (g of gastosPorCategoria(); track g.nome) {
+          <p>
+            <span class="cor" [style.background]="g.cor"></span>
+            {{ g.nome }}: {{ g.valor | currency: 'BRL' }} ({{ g.percentual.toFixed(0) }}%)
+          </p>
+        }
+      </div>
+    </div>
+  }
+</div>

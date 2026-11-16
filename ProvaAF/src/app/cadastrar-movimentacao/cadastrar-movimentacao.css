@@ -1,0 +1,33 @@
+.container {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 400px;
+  margin-bottom: 15px;
+}
+
+form div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+input, select {
+  padding: 8px;
+  font-size: 15px;
+}
+
+button {
+  padding: 10px;
+  cursor: pointer;
+}
+
+a {
+  color: #1b6ca8;
+}

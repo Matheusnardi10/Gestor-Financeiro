@@ -1,0 +1,87 @@
+.container {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+a {
+  color: #1b6ca8;
+}
+
+.resumo {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+.resumo span {
+  flex: 1;
+  min-width: 180px;
+  background: #f1f3f5;
+  padding: 12px 15px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-left: 8px solid #7a7a7a;
+  border-radius: 8px;
+  padding: 12px 15px;
+  margin-bottom: 10px;
+}
+
+li a,
+li button {
+  float: right;
+  margin-left: 10px;
+}
+
+li button {
+  padding: 5px 12px;
+  cursor: pointer;
+}
+
+.filtros {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.filtros select {
+  padding: 8px;
+}
+
+.grafico {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.pizza {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+}
+
+.legenda p {
+  margin: 0 0 6px;
+}
+
+.cor {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  margin-right: 6px;
+}
